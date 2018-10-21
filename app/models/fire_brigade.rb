@@ -1,0 +1,2 @@
+class FireBrigade < ApplicationRecord
+end
