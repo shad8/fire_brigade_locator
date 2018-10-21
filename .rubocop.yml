@@ -1,0 +1,42 @@
+AllCops:
+  Exclude:
+    - bin/**/*
+    - db/**/*
+    - config/**/*
+    - Gemfile
+    - config.ru
+    - Rakefile
+
+ClassAndModuleChildren:
+  Enabled: false
+
+ClassLength:
+  CountComments: false
+  Max: 100
+
+Documentation:
+  Enabled: false
+
+LineLength:
+  Enabled: true
+  Max: 120
+
+MethodLength:
+  CountComments: false
+  Max: 10
+
+ParameterLists:
+  Max: 4
+  CountKeywordArgs: true
+
+TrailingWhitespace:
+  Enabled: true
+
+Style/BlockComments:
+  Enabled: false
+
+Style/FileName:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
