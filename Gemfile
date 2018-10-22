@@ -7,6 +7,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'coffee-rails', '~> 4.2'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.1'
+gem 'roo'
+gem 'roo-xls'
 gem 'sass-rails', '~> 5.0'
 gem 'sqlite3'
 gem 'uglifier', '>= 1.3.0'
