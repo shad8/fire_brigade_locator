@@ -1,5 +1,5 @@
 namespace :import do
-  desc "Import data about units fire brigades from xls file"
+  desc 'Import data about units fire brigades from xls file'
   task :fire_brigade_data, [:file_path] => [:environment] do |_task, args|
     path = args[:file_path]
 
@@ -19,5 +19,4 @@ namespace :import do
       fire_brigades.each(&:save)
     end
   end
-
 end

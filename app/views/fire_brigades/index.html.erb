@@ -1,0 +1,42 @@
+<h1>Fire Brigades</h1>
+
+<%= form_tag root_path, :method => :get do %>
+  <p>
+    <%= text_field_tag :city, params[:city], required: true, placeholder: 'City' %>
+    <%= text_field_tag :street, params[:street], required: true, placeholder: 'Street' %>
+    <%= number_field_tag :radius, params[:radius], min: 1, required: true%>
+    <%= submit_tag "Search Near", :name => nil %>
+  </p>
+<% end %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Distance</th>
+      <th>Province</th>
+      <th>Poviat</th>
+      <th>District</th>
+      <th>City</th>
+      <th>Zipcode</th>
+      <th>Fax</th>
+      <th>Page</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <% for brigade in @fire_brigades %>
+    <tr>
+      <td><%= brigade.name %></td>
+      <td><%= brigade.distance %></td>
+      <td><%= brigade.province %></td>
+      <td><%= brigade.poviat %></td>
+      <td><%= brigade.district %></td>
+      <td><%= brigade.city %></td>
+      <td><%= brigade.zipcode %></td>
+      <td><%= brigade.fax %></td>
+      <td><%= brigade.page %></td>
+      <td><%= brigade.email %></td>
+    </tr>
+  <% end %>
+</table>
+
