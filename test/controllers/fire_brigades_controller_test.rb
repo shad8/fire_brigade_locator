@@ -39,4 +39,14 @@ class FireBrigadesControllerTest < ActionDispatch::IntegrationTest
     assert_template :index
     assert_equal [fire_brigade], assigns(:fire_brigades)
   end
+
+  test 'should return error message when search address not found' do
+    Geocoder::Lookup::Test.add_stub("Lorem ipsum, Lorem ipsum", [{}])
+
+    params = { city: "Lorem ipsum", street: "Lorem ipsum", radius: 100 }
+
+    get root_path, params: params
+
+    assert_equal LocationService::WRONG_ADDRESS_ERROR, flash[:error]
+  end
 end

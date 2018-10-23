@@ -6,6 +6,6 @@ class FireBrigadeTest < ActiveSupport::TestCase
     street = Faker::Address.street_name
     brigade = create(:fire_brigade, city: city, street: street)
 
-    assert_equal "#{city} #{street}", brigade.address
+    assert_equal "#{street}, #{city}", brigade.address
   end
 end

@@ -19,7 +19,7 @@ class LocationServiceTest < ActiveSupport::TestCase
     params = { city: "New York", street: "240 Broadway", radius: 10 }
     result = LocationService.call(params)
 
-    assert_equal [fire_brigade], result
+    assert_equal [fire_brigade], result[:data]
   end
 
   test 'should return only fire brigade in radius' do
@@ -31,7 +31,7 @@ class LocationServiceTest < ActiveSupport::TestCase
     params = { city: "New York", street: "240 Broadway", radius: 1 }
     result = LocationService.call(params)
 
-    assert_collections_equal [fire_brigade_1, fire_brigade_2, fire_brigade_4], result
+    assert_collections_equal [fire_brigade_1, fire_brigade_2, fire_brigade_4], result[:data]
   end
 
   test 'should sort fire brigades by distance' do
@@ -42,7 +42,7 @@ class LocationServiceTest < ActiveSupport::TestCase
     params = { city: "New York", street: "240 Broadway", radius: 100 }
     result = LocationService.call(params)
 
-    assert_equal [fire_brigade_1, fire_brigade_2, fire_brigade_3], result
+    assert_equal [fire_brigade_1, fire_brigade_2, fire_brigade_3], result[:data]
   end
 
   test 'should return empty list for no result' do
@@ -51,12 +51,21 @@ class LocationServiceTest < ActiveSupport::TestCase
     params = { city: "New York", street: "240 Broadway", radius: 1 }
     result = LocationService.call(params)
 
-    assert_empty result
+    assert_empty result[:data]
   end
 
   test 'should return empty list for empty params' do
     result = LocationService.call({})
 
-    assert_empty result
+    assert_empty result[:data]
+  end
+
+  test 'should return error message when search address not found' do
+    Geocoder::Lookup::Test.add_stub("Lorem ipsum, Lorem ipsum", [{}])
+    params = { city: "Lorem ipsum", street: "Lorem ipsum", radius: 100 }
+
+    result = LocationService.call(params)
+
+    assert_equal LocationService::WRONG_ADDRESS_ERROR, result[:errors]
   end
 end

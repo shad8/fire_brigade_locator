@@ -1,5 +1,7 @@
 class FireBrigadesController < ApplicationController
   def index
-    @fire_brigades = LocationService.call(params)
+    results = LocationService.call(params)
+    @fire_brigades = results[:data]
+    flash[:error] = results[:errors]
   end
 end
