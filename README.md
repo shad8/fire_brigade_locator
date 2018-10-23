@@ -1,24 +1,10 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Application provide to search nearest fire brigade station in passed localization.
 
-Things you may want to cover:
+## Prepare data:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. Download example fire brigade information from: https://dane.gov.pl/dataset/1050/resource/11127
+2. Load data to application using rake: ```rake import:fire_brigade_data[file_path] ```
+3. Generate coordination using rake: ```rake geocode:all  CLASS=FireBrigade```
+4. Run application server ```rails s```
