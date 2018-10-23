@@ -19,7 +19,7 @@ Documentation:
 
 LineLength:
   Enabled: true
-  Max: 120
+  Max: 130
 
 MethodLength:
   CountComments: false
@@ -35,8 +35,8 @@ TrailingWhitespace:
 Style/BlockComments:
   Enabled: false
 
-Style/FileName:
+Style/FrozenStringLiteralComment:
   Enabled: false
 
-Style/FrozenStringLiteralComment:
+Naming/VariableNumber:
   Enabled: false

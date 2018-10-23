@@ -5,7 +5,7 @@
     <%= form_tag root_path, :method => :get, class: 'form-inline' do %>
         <%= text_field_tag :city, params[:city], required: true, placeholder: 'City', class: 'form-control d-margin-right' %>
         <%= text_field_tag :street, params[:street], required: true, placeholder: 'Street', class: 'form-control d-margin-right' %>
-        <%= number_field_tag :radius, params[:radius], min: 1, required: true, class: 'form-control d-margin-right' %>
+        <%= number_field_tag :radius, params[:radius], min: 1, required: true, placeholder: 'Radius [km]', class: 'form-control d-margin-right' %>
         <%= submit_tag "Search Near", :name => nil, class: "btn btn-primary" %>
     <% end %>
   </div>
@@ -19,18 +19,28 @@
     <tr>
       <th>Name</th>
       <th>Distance (km)</th>
+      <th>Province</th>
+      <th>Poviat</th>
+      <th>District</th>
       <th>City</th>
       <th>Zipcode</th>
-      <th>Street</th>
+      <th>Fax</th>
+      <th>Page</th>
+      <th>Email</th>
     </tr>
     </thead>
     <% for brigade in @fire_brigades %>
       <tr>
         <td><%= brigade.name %></td>
         <td><%= number_with_precision(brigade.distance, precision: 2) %></td>
+        <td><%= brigade.province %></td>
+        <td><%= brigade.poviat %></td>
+        <td><%= brigade.district %></td>
         <td><%= brigade.city %></td>
         <td><%= brigade.zipcode %></td>
-        <td><%= brigade.street %></td>
+        <td><%= brigade.fax %></td>
+        <td><%= brigade.page %></td>
+        <td><%= brigade.email %></td>
       </tr>
     <% end %>
   </table>
