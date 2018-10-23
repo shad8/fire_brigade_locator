@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_21_121617) do
+ActiveRecord::Schema.define(version: 2018_10_23_185600) do
 
   create_table "fire_brigades", force: :cascade do |t|
     t.string "province"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2018_10_21_121617) do
     t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["latitude", "longitude"], name: "index_fire_brigades_on_latitude_and_longitude"
   end
 
 end
